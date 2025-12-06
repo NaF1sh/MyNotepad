@@ -50,14 +50,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _addOrEditNote({Note? note}) async {
-    // Navigate to Editor
     await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => NoteEditor(note: note),
       ),
     );
-    // Reload notes on return (Auto-save handled in editor)
     _loadNotes();
   }
   
@@ -98,7 +96,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: [
-          // Layer 1: Background Image
           if (bgPath != null)
             Positioned.fill(
               child: Image.file(
@@ -107,13 +104,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           
-          // Layer 2: Black Overlay (for readability)
           if (bgPath != null)
             Positioned.fill(
               child: Container(color: Colors.black.withOpacity(0.3)),
             ),
 
-          // Layer 3: Content
           SafeArea(
             child: _notes.isEmpty
                 ? Center(
@@ -130,7 +125,6 @@ class _HomePageState extends State<HomePage> {
                     itemCount: _notes.length,
                     itemBuilder: (context, index) {
                       final note = _notes[index];
-                      // Determine preview text color
                       final textColor = Color(note.color);
 
                       return GestureDetector(
@@ -163,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.grey[900]!.withOpacity(0.6), // Translucent
+                                color: Colors.grey[900]!.withOpacity(0.6),
                                 borderRadius: BorderRadius.circular(16),
                                 border: Border.all(color: Colors.white.withOpacity(0.1)),
                               ),
@@ -181,19 +175,17 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   if (note.imagePath != null) const SizedBox(height: 10),
                                   
-                                  // Title
                                   if (note.title.isNotEmpty)
                                     Text(
                                       note.title,
                                       style: GoogleFonts.outfit(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
-                                        color: textColor, // Use saved color
+                                        color: textColor,
                                       ),
                                     ),
                                   if (note.title.isNotEmpty) const SizedBox(height: 8),
                                   
-                                  // Content (Text vs Checklist)
                                   if (note.type == 'text')
                                     Linkify(
                                       onOpen: (link) async {
@@ -215,7 +207,6 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     )
                                   else if (note.checklistItems != null)
-                                    // Preview first 3 items
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: note.checklistItems!.take(3).map((item) => Row(

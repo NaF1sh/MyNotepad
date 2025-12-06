@@ -21,19 +21,18 @@ class _NoteEditorState extends State<NoteEditor> {
   String? _imagePath;
   final StorageService _storageService = StorageService();
 
-  // V2 State
   bool _isChecklist = false;
   List<ChecklistItem> _checklistItems = [];
-  int _textColor = 0xFFFFFFFF; // Default White
+  int _textColor = 0xFFFFFFFF;
 
   final List<int> _colors = [
-    0xFFFFFFFF, // White
-    0xFFFF8A80, // Red
-    0xFFFFFF8D, // Yellow
-    0xFFCCFF90, // Green
-    0xFFA7FFEB, // Teal
-    0xFF80D8FF, // Blue
-    0xFFCFD8DC, // Grey
+    0xFFFFFFFF,
+    0xFFFF8A80,
+    0xFFFFFF8D,
+    0xFFCCFF90,
+    0xFFA7FFEB,
+    0xFF80D8FF,
+    0xFFCFD8DC,
   ];
 
   @override
@@ -43,10 +42,8 @@ class _NoteEditorState extends State<NoteEditor> {
     _contentController = TextEditingController(text: widget.note?.content ?? '');
     _imagePath = widget.note?.imagePath;
     
-    // Load V2 Data
     _isChecklist = widget.note?.type == 'checklist';
     
-    // Set default color
     if (widget.note?.color != null) {
       _textColor = widget.note!.color;
     }
@@ -55,11 +52,10 @@ class _NoteEditorState extends State<NoteEditor> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Initialize color if it's a new note
     if (widget.note == null && _textColor == 0xFFFFFFFF) {
       final isDark = Theme.of(context).brightness == Brightness.dark;
       if (!isDark) {
-        _textColor = 0xFF000000; // Default to Black for Light Theme
+        _textColor = 0xFF000000;
       }
     }
   }
@@ -74,7 +70,6 @@ class _NoteEditorState extends State<NoteEditor> {
     }
   }
 
-  // Auto-save logic
   Future<void> _saveNote() async {
     if (_titleController.text.trim().isEmpty &&
         !_isChecklist && _contentController.text.trim().isEmpty &&
@@ -86,7 +81,7 @@ class _NoteEditorState extends State<NoteEditor> {
     final newNote = Note(
       id: widget.note?.id ?? const Uuid().v4(),
       title: _titleController.text,
-      content: _isChecklist ? '' : _contentController.text, // If checklist, ignore content text
+      content: _isChecklist ? '' : _contentController.text,
       imagePath: _imagePath,
       createdAt: widget.note?.createdAt ?? DateTime.now(),
       type: _isChecklist ? 'checklist' : 'text',
@@ -131,7 +126,6 @@ class _NoteEditorState extends State<NoteEditor> {
             onPressed: () => Navigator.maybePop(context),
           ),
           actions: [
-            // Color Picker
             PopupMenuButton<int>(
               icon: Icon(Icons.color_lens, color: Theme.of(context).iconTheme.color),
               onSelected: (color) {
@@ -142,7 +136,6 @@ class _NoteEditorState extends State<NoteEditor> {
                 child: Container(width: 24, height: 24, color: Color(c)),
               )).toList(),
             ),
-            // Toggle Checklist
             IconButton(
               icon: Icon(_isChecklist ? Icons.text_fields : Icons.check_box, color: Theme.of(context).iconTheme.color),
               onPressed: () {
@@ -179,7 +172,7 @@ class _NoteEditorState extends State<NoteEditor> {
                 style: GoogleFonts.outfit(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(_textColor), // Applies Color
+                  color: Color(_textColor),
                 ),
                 decoration: const InputDecoration(
                   hintText: 'Title',

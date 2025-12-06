@@ -6,9 +6,9 @@ class Note {
   final String content;       
   final String? imagePath;
   final DateTime createdAt;
-  final String type;          // 'text' or 'checklist'
+  final String type;
   final List<ChecklistItem>? checklistItems;
-  final int color;            // Hex color value for the text (default white)
+  final int color;
 
   Note({
     required this.id,
@@ -18,7 +18,7 @@ class Note {
     required this.createdAt,
     this.type = 'text',
     this.checklistItems,
-    this.color = 0xFFFFFFFF, // Default White
+    this.color = 0xFFFFFFFF,
   });
 
   Map<String, dynamic> toMap() {

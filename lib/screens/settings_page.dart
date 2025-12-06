@@ -24,7 +24,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Basic color setup
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final textColor = isDark ? Colors.white : Colors.black;
 
@@ -35,11 +34,9 @@ class _SettingsPageState extends State<SettingsPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      // SIMPLE SCROLLABLE LIST
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // 1. HEADER
           Center(
             child: Text(
               'Select Theme', 
@@ -48,10 +45,9 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const SizedBox(height: 20),
 
-          // 2. THEME GRID (Simple Container)
           GridView.count(
-            shrinkWrap: true, // IMPORTANT: Allows Grid inside List
-            physics: const NeverScrollableScrollPhysics(), // Disable grid's own scrolling
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 2,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
@@ -80,7 +76,6 @@ class _SettingsPageState extends State<SettingsPage> {
           const Divider(),
           const SizedBox(height: 10),
 
-          // 3. BACKGROUND IMAGE SETTINGS
           ListTile(
             title: Text('Custom Background', style: GoogleFonts.outfit(color: textColor, fontWeight: FontWeight.bold)),
             subtitle: Text('Tap to choose image', style: TextStyle(color: textColor.withOpacity(0.6))),
@@ -98,7 +93,6 @@ class _SettingsPageState extends State<SettingsPage> {
                },
              ),
 
-          // 4. ABOUT SECTION
           ListTile(
             leading: Icon(Icons.info_outline, color: textColor),
             title: Text('About', style: GoogleFonts.outfit(color: textColor, fontWeight: FontWeight.bold)),
@@ -125,20 +119,19 @@ class _SettingsPageState extends State<SettingsPage> {
               );
             },
           ),
-          const SizedBox(height: 50), // Extra space at bottom
+          const SizedBox(height: 50),
         ],
       ),
     );
   }
 
-  // Simple Helper Widget for Theme Cards
   Widget _buildThemeCard(String name, String mode, Color bg, Color accent) {
     bool isSelected = _settings.themeMode == mode;
     
     return GestureDetector(
       onTap: () {
         _settings.setTheme(mode);
-        setState(() {}); // Refresh screen
+        setState(() {});
       },
       child: Container(
         decoration: BoxDecoration(
