@@ -1,16 +1,30 @@
-# minimal_notepad
+# My Notepad
 
-A new Flutter project.
+A minimal, feature-rich note-taking application built with Flutter.
 
-## Getting Started
+## Project Details
 
-This project is a starting point for a Flutter application.
+*   **Course:** Mobile Application Development (CSE)
+*   **Semester:** 6th Semester
+*   **Institution:** Notre Dame University Bangladesh
+*   **Date:** December 06, 2025
 
-A few resources to get you started if this is your first Flutter project:
+## Submitted To
+**Taiful Hasan Shuvo**
+Faculty, Department of CSE
+Notre Dame University Bangladesh
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Team Members
+1.  **Syed Nafish Shakir** (6th Semester, CSE)
+2.  **Tonmoy Sarker**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+*   **Rich Text & Checklists:** Create standard notes or to-do lists.
+*   **Glassmorphism UI:** Modern, translucent design aesthetics.
+*   **Custom Themes:** Includes Dracula, Nord, Sunset, ThinkPad, and more.
+*   **Local Storage:** Notes are saved permanently on the device.
+*   **Media Support:** Attach photos to your notes.
+*   **Clickable Links:** URLs are automatically detected and clickable.
+
+## Screenshots
+*(Screenshots can be added here)*
