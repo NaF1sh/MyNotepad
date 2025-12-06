@@ -16,7 +16,7 @@ Notre Dame University Bangladesh
 
 ## Team Members
 1.  **Syed Nafish Shakir** (6th Semester, CSE)
-2.  **Tonmoy Sarker**
+2.  **Tanmoy Sarker**
 
 ## Features
 *   **Rich Text & Checklists:** Create standard notes or to-do lists.
