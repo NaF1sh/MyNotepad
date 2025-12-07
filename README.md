@@ -11,7 +11,7 @@ A minimal, feature-rich note-taking application built with Flutter.
 
 ## Submitted To
 **Taiful Hasan Shuvo**
-Faculty, Department of CSE
+Adjunct Faculty, Department of CSE
 Notre Dame University Bangladesh
 
 ## Team Members
